@@ -4,6 +4,7 @@
   "description": "Collects content from Discord channels.",
   "main": "dist/index.js",
   "scripts": {
+    "dev": "nodemon -w src --ext ts --exec \"tsc && node dist/index.js\"",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +13,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "nodemon": "2.0.4",
     "prettier": "2.0.5",
     "typescript": "^3.9.5"
   }
