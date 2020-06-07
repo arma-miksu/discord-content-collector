@@ -12,7 +12,7 @@
   "keywords": [
     "discord"
   ],
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "devDependencies": {
     "@types/chai": "^4.2.11",
     "@types/mocha": "^7.0.2",
