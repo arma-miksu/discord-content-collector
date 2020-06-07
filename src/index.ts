@@ -1,1 +1,3 @@
-console.log('Hello Discord Content Collector')
+import hello from './hello'
+
+console.log(hello())

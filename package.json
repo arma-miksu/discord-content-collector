@@ -6,15 +6,24 @@
   "scripts": {
     "dev": "nodemon -w src --ext ts --exec \"tsc && node dist/index.js\"",
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -r ts-node/register src/**/*.test.ts",
+    "test:dev": "mocha -w src -r ts-node/register src/**/*.test.ts"
   },
   "keywords": [
     "discord"
   ],
   "license": "MIT",
   "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
+    "@types/sinon": "^9.0.4",
+    "chai": "^4.2.0",
+    "mocha": "^7.2.0",
     "nodemon": "2.0.4",
     "prettier": "2.0.5",
+    "sinon": "^9.0.2",
+    "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
-  }
+  },
+  "dependencies": {}
 }
