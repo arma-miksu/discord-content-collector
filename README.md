@@ -9,6 +9,10 @@ for static builder tools.
 * TODO: It stores content
 * TODO: It serves content over REST API
 
+## Overall Plan
+
+![Overall diagram of the project](discord-content-collector.png)
+
 ## License
 
 This software is licensed under [GPL 3.0 or later](./LICENSE.txt).
