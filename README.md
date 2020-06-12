@@ -7,10 +7,25 @@ for static builder tools.
 
 ### Using `config.json` file
 
-Place a file to your app root directory having following configuration:
+Place a file to your app root directory having contents as following example:
 
     {
-      "token": "cskh3g2kghi2sdf32.ak3sge.3uhgk3g.sjjfkew"
+      "token": "cskh3g2kghi2sdf32.ak3sge.3uhgk3g.sjjfkew",
+      "guilds": [
+        {
+          "guild": "Your Clan Discord",
+          "filter": {
+            "reaction": {
+              "👌": {
+                "roles": ["moderators"]
+              },
+              "custom-emoji-lol": {
+                "roles": ["admins"]
+              }
+            }
+          }
+        }
+      ]
     }
 
 ## Main Features
