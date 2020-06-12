@@ -30,7 +30,7 @@ Place a file to your app root directory having contents as following example:
 
 ## Main Features
 
-* TODO: It filters Discord messages based on configuration
+* It filters Discord messages based on configuration
 * TODO: It stores content
 * TODO: It serves content over REST API
 
