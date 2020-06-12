@@ -3,6 +3,16 @@
 This project stores filtered messages into content repository that can be used
 for static builder tools.
 
+## Configuration
+
+### Using `config.json` file
+
+Place a file to your app root directory having following configuration:
+
+    {
+      "token": "cskh3g2kghi2sdf32.ak3sge.3uhgk3g.sjjfkew"
+    }
+
 ## Main Features
 
 * TODO: It filters Discord messages based on configuration
