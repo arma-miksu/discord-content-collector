@@ -32,11 +32,6 @@ Place a file to your app root directory having contents as following example:
 
 * It filters Discord messages based on configuration
 * TODO: It stores content
-* TODO: It serves content over REST API
-
-## Overall Plan
-
-![Overall diagram of the project](discord-content-collector.png)
 
 ## License
 
