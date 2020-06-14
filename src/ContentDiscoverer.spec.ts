@@ -1,12 +1,11 @@
 import ContentDiscoverer from "./ContentDiscoverer"
 import { Client } from "discord.js"
-import { mock, instance, verify } from "ts-mockito"
+import { mock, instance } from "ts-mockito"
 import { expect } from "chai"
 
 describe('ContentDiscoverer', () => {
   it('calls event listeners', () => {
-    const mockedClient: Client = mock(Client)
-    const contentDiscoverer = new ContentDiscoverer({ client: instance(mockedClient) })
+    const contentDiscoverer = new ContentDiscoverer({ client: instance(mock(Client)) })
     expect(contentDiscoverer.registeredEventListeners).to.be.empty
 
     let calls: number = 0;
