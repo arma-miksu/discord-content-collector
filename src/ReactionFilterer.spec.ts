@@ -1,6 +1,6 @@
 import { mock, instance, when } from 'ts-mockito'
 import ReactionFilterer from "./ReactionFilterer"
-import { MessageReaction, ReactionEmoji, Role, Collection } from "discord.js"
+import { MessageReaction, ReactionEmoji } from "discord.js"
 import { expect } from 'chai'
 
 describe('ReactionFilterer', () => {
@@ -12,12 +12,12 @@ describe('ReactionFilterer', () => {
     ];
     for (let { givenEmoji, testEmoji, result } of testSet) {
       // Mock reaction emoji and emoji name
-      const mockedReactionEmoji:ReactionEmoji = mock(ReactionEmoji)
+      const mockedReactionEmoji: ReactionEmoji = mock(ReactionEmoji)
       when(mockedReactionEmoji.name).thenReturn(givenEmoji)
       const reactionEmoji = instance(mockedReactionEmoji)
 
       // Mock reaction
-      const mockedReaction:MessageReaction = mock(MessageReaction)
+      const mockedReaction: MessageReaction = mock(MessageReaction)
       when(mockedReaction.emoji).thenReturn(reactionEmoji)
       const reaction = instance(mockedReaction)
 

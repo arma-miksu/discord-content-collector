@@ -39,9 +39,9 @@ describe('GuildFilterer', () => {
     ];
     for (let { filterGuildName, testGuild, result } of testSet) {
       const guildFilterer = new GuildFilterer({ guildName: filterGuildName })
-      const mockedGuild:Guild = mock(Guild)
+      const mockedGuild: Guild = mock(Guild)
       when(mockedGuild.name).thenReturn(testGuild)
-      const guild:Guild = instance(mockedGuild)
+      const guild: Guild = instance(mockedGuild)
       expect(guildFilterer.match(guild)).to.be.equal(result, `${filterGuildName} - ${testGuild} = ${result}`)
     }
   })

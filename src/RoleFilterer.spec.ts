@@ -44,9 +44,9 @@ describe('RoleFilterer', () => {
     ];
     for (let { filterRoles, testRole, result } of testSet) {
       const roleFilterer = new RoleFilterer({ roles: filterRoles })
-      const mockedRole:Role = mock(Role)
+      const mockedRole: Role = mock(Role)
       when(mockedRole.name).thenReturn(testRole)
-      const role:Role = instance(mockedRole)
+      const role: Role = instance(mockedRole)
       expect(roleFilterer.match(role)).to.be.equal(result, `${filterRoles.join(',')} - ${testRole} = ${result}`)
     }
   })
