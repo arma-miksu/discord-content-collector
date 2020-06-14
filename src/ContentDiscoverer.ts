@@ -15,4 +15,8 @@ export default class ContentDiscoverer {
     callbacks.push(callback)
     this.registeredEventListeners.set(eventName, callbacks)
   }
+  trigger(eventName: string, args: any[]): void {
+    const callbacks: Function[] = this.registeredEventListeners.get(eventName) || []
+    callbacks.forEach((callback: Function) => callback(...args))
+  }
 }
