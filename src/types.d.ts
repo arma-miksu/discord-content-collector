@@ -3,13 +3,10 @@ import {} from './types'
 
 interface GuildConfig {
   guild: string,
-  filter: FilterConfig
+  reactions: Array<ReactionConfig>
 }
 
-interface FilterConfig {
-  reaction: Object<string, ReactionFilterConfig>
-}
-
-interface ReactionFilterConfig {
-  roles: Array<string>
+interface ReactionConfig {
+  emojiName: string,
+  roles?: Array<string>
 }

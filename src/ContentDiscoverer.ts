@@ -1,11 +1,16 @@
-import { Client } from "discord.js";
+import { Client, MessageReaction, User, PartialUser } from "discord.js";
+import GuildFilterer from "./GuildFilterer";
+import ReactionFilterer from "./ReactionFilterer";
+import { GuildConfig } from "./types";
 
 interface ContentDiscovererOptions {
   client: Client
+  guilds: Array<GuildConfig>
 }
 
 export default class ContentDiscoverer {
   client: Client
+  guilds: Array<GuildConfig>
   registeredEventListeners: Map<string, Array<Function>> = new Map()
 
   /**
@@ -14,6 +19,44 @@ export default class ContentDiscoverer {
    */
   constructor(opts: ContentDiscovererOptions) {
     this.client = opts.client
+    this.guilds = opts.guilds
+    this.setupOnMessageReactionAdd()
+  }
+
+  setupOnMessageReactionAdd(): void {
+    this.client.on('messageReactionAdd', async (messageReaction: MessageReaction, user: User | PartialUser) => {
+
+      // Only accept messages on guilds
+      if (!messageReaction.message.guild) return
+
+      // Fetch whole message reaction if it's given partially
+      if (messageReaction.partial) {
+        try {
+          await messageReaction.fetch()
+        } catch (err) {
+          throw Error('Failed fetching partial reaction')
+        }
+      }
+
+      for (let guildConfig of this.guilds) {
+
+        // Filter out unmatching guild names
+        const guildFilterer = new GuildFilterer({ guildName: guildConfig.guild })
+        if (!guildFilterer.match(messageReaction.message.guild)) return
+  
+        for (let reactionConfig of guildConfig.reactions) {
+
+          // Filter out unmatching reaction's emojis and reaction user's role
+          const reactionFilterer = new ReactionFilterer({ reaction: reactionConfig.emojiName, roles: reactionConfig.roles })
+          const reactionGuildMember = await messageReaction.message.guild?.members.fetch(user.id);
+          if (!reactionFilterer.match(messageReaction, reactionGuildMember)) return
+    
+          // At this point we have matching guild, mathing emoji and if roles
+          // were configured, the roles too.
+          this.trigger('contentDiscover', [messageReaction.message])
+        }
+      }
+    })
   }
 
   /**

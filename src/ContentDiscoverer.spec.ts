@@ -5,7 +5,7 @@ import { expect } from "chai"
 
 describe('ContentDiscoverer', () => {
   it('calls event listeners', () => {
-    const contentDiscoverer = new ContentDiscoverer({ client: instance(mock(Client)) })
+    const contentDiscoverer = new ContentDiscoverer({ client: instance(mock(Client)), guilds: [] })
     expect(contentDiscoverer.registeredEventListeners).to.be.empty
 
     let calls: number = 0;
