@@ -33,6 +33,10 @@ Place a file to your app root directory having contents as following example:
 * It filters Discord messages based on configuration
 * TODO: It stores content
 
+## Plan
+
+![Package Diagram of current plan](docs/package-diagram.png)
+
 ## License
 
 This software is licensed under [GPL 3.0 or later](./LICENSE.txt).
