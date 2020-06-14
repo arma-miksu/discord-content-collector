@@ -14,16 +14,16 @@ Place a file to your app root directory having contents as following example:
       "guilds": [
         {
           "guild": "Your Clan Discord",
-          "filter": {
-            "reaction": {
-              "👌": {
-                "roles": ["moderators"]
-              },
-              "custom-emoji-lol": {
-                "roles": ["admins"]
-              }
+          "reactions": [
+            {
+              "emojiName": "👌",
+              "roles": ["moderators"]
+            },
+            {
+              "emojiName": "custom-emoji-lol",
+              "roles": ["admins"]
             }
-          }
+          ]
         }
       ]
     }
